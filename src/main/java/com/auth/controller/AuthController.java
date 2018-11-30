@@ -98,7 +98,7 @@ public class AuthController {
 
         String jwt = tokenProvider.generateToken(authentication);
         
-        ResponseBean response = new ResponseBean(new JwtAuthenticationResponse(jwt,user.getRoles()));
+        ResponseBean response = new ResponseBean(new JwtAuthenticationResponse(jwt,user.getRoles(),user.getId(),user.getEmail()));
         return new ResponseEntity<ResponseBean>(response,HttpStatus.OK);
     }
 	
