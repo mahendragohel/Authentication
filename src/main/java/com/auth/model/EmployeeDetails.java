@@ -48,6 +48,20 @@ public class EmployeeDetails implements Serializable{
 	@Column(name = "last_name")
 	private String lastName;
 	
+	@NotBlank
+	@Size(max = 10)
+	@Column(name = "phone_number")
+	private Long phoneNumber;
+	
+	
+	public Long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(Long phoneNumber) {
+		phoneNumber = phoneNumber;
+	}
+
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	
@@ -93,7 +107,7 @@ public class EmployeeDetails implements Serializable{
 	}
 
 	public EmployeeDetails(Long id, @NotBlank @Size(max = 60) String firstName,
-			@NotBlank @Size(max = 60) String middleName, @NotBlank @Size(max = 60) String lastName, Gender gender,
+			@NotBlank @Size(max = 60) String middleName, @NotBlank @Size(max = 60) String lastName,@NotBlank @Size(max = 10) Long phoneNumber, Gender gender,
 			Date dateOfBirth, Date dateOfJoining, EmploymentStatus employmentStatus, EmploymentType employmentType,
 			@NotBlank Double experience) {
 		super();
@@ -101,6 +115,7 @@ public class EmployeeDetails implements Serializable{
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
 		this.dateOfJoining = dateOfJoining;
@@ -112,7 +127,7 @@ public class EmployeeDetails implements Serializable{
 	
 	
 	public EmployeeDetails(Long id, @NotBlank @Size(max = 60) String firstName,
-			@NotBlank @Size(max = 60) String middleName, @NotBlank @Size(max = 60) String lastName, Gender gender,
+			@NotBlank @Size(max = 60) String middleName, @NotBlank @Size(max = 60) String lastName,@NotBlank @Size(max = 10) Long phoneNumber, Gender gender,
 			Date dateOfBirth, Date dateOfJoining, EmploymentStatus employmentStatus, EmploymentType employmentType,
 			Double experience, @Size(max = 255) String profilePictureUrl) {
 		super();
@@ -120,6 +135,7 @@ public class EmployeeDetails implements Serializable{
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
 		this.dateOfJoining = dateOfJoining;
@@ -139,13 +155,14 @@ public class EmployeeDetails implements Serializable{
 
 	public EmployeeDetails(@NotBlank @Size(max = 60) String firstName,
 			@NotBlank @Size(max = 60) String middleName, @NotBlank @Size(max = 60) String lastName,
-			Gender gender,
+			@NotBlank @Size(max = 10) Long phoneNumber, Gender gender,
 			Date dateOfBirth, Date dateOfJoining, EmploymentStatus employmentStatus, EmploymentType employmentType,
 			@NotBlank Double experience) {
 		super();
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
 		this.dateOfJoining = dateOfJoining;

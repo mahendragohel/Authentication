@@ -47,11 +47,12 @@ public class EmployeeDetailsController {
 		User user = new User();
 		user.setId(request.getUserId());
 		
-		Designation designation = new Designation();
-		designation.setId(request.getDesignationId());
-		
 		Department department = new Department();
 		department.setId(request.getDepartmentId());
+		
+		Designation designation = new Designation();
+		designation.setId(request.getDesignationId());
+		designation.setDepartment(department);
 		
 		SubDepartment subDepartment = new SubDepartment();
 		subDepartment.setId(request.getSubDepartmentId());
@@ -60,6 +61,7 @@ public class EmployeeDetailsController {
 				request.getFirstName(),
 				request.getMiddleName(),
 				request.getLastName(),
+				request.getPhoneNumber(),
 				request.getGender(),
 				request.getDateOfBirth(),
 				request.getDateOfJoining(),
@@ -99,6 +101,7 @@ public class EmployeeDetailsController {
 				request.getFirstName(),
 				request.getMiddleName(),
 				request.getLastName(),
+				request.getPhoneNumber(),
 				request.getGender(),
 				request.getDateOfBirth(),
 				request.getDateOfJoining(),
