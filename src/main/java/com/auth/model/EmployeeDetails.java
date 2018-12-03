@@ -19,6 +19,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.NaturalId;
+
 //public class EmployeeDetails {}
 @Entity
 @Table(name = "employee_details")
@@ -48,8 +50,7 @@ public class EmployeeDetails implements Serializable{
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@NotBlank
-	@Size(max = 10)
+	@NaturalId
 	@Column(name = "phone_number")
 	private Long phoneNumber;
 	
@@ -82,7 +83,7 @@ public class EmployeeDetails implements Serializable{
 	private Department department;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "employee_id")
 	private User user;
 	
 	
