@@ -4,42 +4,37 @@ import com.auth.model.Department;
 
 public class DesignationResponse {
 	
-	private Long designationId;
-	private String designation;
-	private Long departmentId;
-	private String department;
+	private Long id;
+	private String name;
+	private Department department;
 	
-	public DesignationResponse(Long designationId, String designation, Department department) {
+	public DesignationResponse(Long id, String name,Department department) {
 		super();
-		this.designationId = designationId;
-		this.designation = designation;
-		this.departmentId = department.getId();
-		this.department = department.getName();
+		this.id = id;
+		this.name = name;
+		this.department = new Department(department.getId(),department.getName());
 	}
-	public Long getDesignationId() {
-		return designationId;
-	}
-	public void setDesignationId(Long designationId) {
-		this.designationId = designationId;
-	}
-	public String getDesignation() {
-		return designation;
-	}
-	public void setDesignation(String designation) {
-		this.designation = designation;
-	}
-	public Long getDepartmentId() {
-		return departmentId;
-	}
-	public void setDepartmentId(Long departmentId) {
-		this.departmentId = departmentId;
-	}
-	public String getDepartment() {
+	public Department getDepartment() {
 		return department;
 	}
-	public void setDepartment(String department) {
+	public Long getId() {
+		return id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setDepartment(Department department) {
 		this.department = department;
 	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	
 	
 	
 }

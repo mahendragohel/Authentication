@@ -2,9 +2,12 @@ package com.auth.payload;
 
 import java.util.Date;
 
+import com.auth.model.Department;
+import com.auth.model.Designation;
 import com.auth.model.EmploymentStatus;
 import com.auth.model.EmploymentType;
 import com.auth.model.Gender;
+import com.auth.model.SubDepartment;
 
 public class EmployeeDetailsRequest {
 
@@ -16,10 +19,10 @@ public class EmployeeDetailsRequest {
 	private Gender gender;
 	private Date dateOfBirth;
 	private Date dateOfJoining;
-	private Long designationId;
-    private Long departmentId;
+	private Designation designation;
+    private Department department;
 	private Long userId;
-	private Long subDepartmentId;
+	private SubDepartment subDepartment;
 	private EmploymentStatus employmentStatus;
 	private EmploymentType employmentType;
 	private Double experience;
@@ -30,11 +33,12 @@ public class EmployeeDetailsRequest {
 	public Date getDateOfJoining() {
 		return dateOfJoining;
 	}
-	public Long getDepartmentId() {
-		return departmentId;
+	
+	public Department getDepartment() {
+		return department;
 	}
-	public Long getDesignationId() {
-		return designationId;
+	public Designation getDesignation() {
+		return designation;
 	}
 	public EmploymentStatus getEmploymentStatus() {
 		return employmentStatus;
@@ -57,15 +61,17 @@ public class EmployeeDetailsRequest {
 	public String getLastName() {
 		return lastName;
 	}
+	
 	public String getMiddleName() {
 		return middleName;
 	}
 	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public Long getSubDepartmentId() {
-		return subDepartmentId;
+	public SubDepartment getSubDepartment() {
+		return subDepartment;
 	}
+	
 	public Long getUserId() {
 		return userId;
 	}
@@ -75,11 +81,11 @@ public class EmployeeDetailsRequest {
 	public void setDateOfJoining(Date dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
-	public void setDepartmentId(Long departmentId) {
-		this.departmentId = departmentId;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
-	public void setDesignationId(Long designationId) {
-		this.designationId = designationId;
+	public void setDesignation(Designation designation) {
+		this.designation = designation;
 	}
 	public void setEmploymentStatus(EmploymentStatus employmentStatus) {
 		this.employmentStatus = employmentStatus;
@@ -93,6 +99,7 @@ public class EmployeeDetailsRequest {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
@@ -108,8 +115,8 @@ public class EmployeeDetailsRequest {
 	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public void setSubDepartmentId(Long subDepartmentId) {
-		this.subDepartmentId = subDepartmentId;
+	public void setSubDepartment(SubDepartment subDepartment) {
+		this.subDepartment = subDepartment;
 	}
 	public void setUserId(Long userId) {
 		this.userId = userId;

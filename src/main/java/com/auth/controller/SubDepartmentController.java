@@ -40,12 +40,24 @@ public class SubDepartmentController {
 	}
 	
 	@GetMapping("/subdepartments/{departmentId}")
-	private ResponseEntity<ResponseBean> getAllDepartment(@PathVariable(value="departmentId")Long departmentId){
+	private ResponseEntity<ResponseBean> getAllDepartmentByDepartmentId(@PathVariable(value="departmentId")Long departmentId){
 		List<SubDepartment> all = subDepartmentRepository.findByDepartment_Id(departmentId);
 		List<SubDepartmentResponse> results = new ArrayList<>();
 		
 		all.forEach(subdepartment ->{
-			results.add(new SubDepartmentResponse(subdepartment));
+			results.add(new SubDepartmentResponse(subdepartment,subdepartment.getDepartment()));
+		});
+		ResponseBean response = new ResponseBean(results);
+		return new ResponseEntity<ResponseBean>(response,HttpStatus.OK);
+	}
+	
+	@GetMapping("/subdepartments/all")
+	private ResponseEntity<ResponseBean> getAllDepartment(){
+		List<SubDepartment> all = subDepartmentRepository.findAll();
+		List<SubDepartmentResponse> results = new ArrayList<>();
+		
+		all.forEach(subdepartment ->{
+			results.add(new SubDepartmentResponse(subdepartment,subdepartment.getDepartment()));
 		});
 		ResponseBean response = new ResponseBean(results);
 		return new ResponseEntity<ResponseBean>(response,HttpStatus.OK);

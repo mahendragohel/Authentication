@@ -48,14 +48,14 @@ public class EmployeeDetailsController {
 		user.setId(request.getUserId());
 		
 		Department department = new Department();
-		department.setId(request.getDepartmentId());
+		department.setId(request.getDepartment().getId());
 		
 		Designation designation = new Designation();
-		designation.setId(request.getDesignationId());
+		designation.setId(request.getDesignation().getId());
 		designation.setDepartment(department);
 		
 		SubDepartment subDepartment = new SubDepartment();
-		subDepartment.setId(request.getSubDepartmentId());
+		subDepartment.setId(request.getSubDepartment().getId());
 		
 		EmployeeDetails details = new EmployeeDetails(
 				request.getFirstName(),
@@ -86,13 +86,13 @@ public class EmployeeDetailsController {
 		user.setId(request.getUserId());
 		
 		Designation designation = new Designation();
-		designation.setId(request.getDesignationId());
+		designation.setId(request.getDesignation().getId());
 		
 		Department department = new Department();
-		department.setId(request.getDepartmentId());
+		department.setId(request.getDepartment().getId());
 		
 		SubDepartment subDepartment = new SubDepartment();
-		subDepartment.setId(request.getSubDepartmentId());
+		subDepartment.setId(request.getSubDepartment().getId());
 		EmployeeDetails existing = repository.findById(profileId)
 				.orElseThrow(()->new ResourceNotFoundException("Employee Profile", "profileId", profileId));
 		
