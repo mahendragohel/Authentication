@@ -1,10 +1,14 @@
 package com.auth.payload;
 
 import java.util.Date;
+
+import com.auth.model.Department;
+import com.auth.model.Designation;
 import com.auth.model.EmployeeDetails;
 import com.auth.model.EmploymentStatus;
 import com.auth.model.EmploymentType;
 import com.auth.model.Gender;
+import com.auth.model.SubDepartment;
 import com.auth.model.User;
 
 public class EmployeeDetailsResponse {
@@ -16,10 +20,10 @@ public class EmployeeDetailsResponse {
 	private Gender gender;
 	private Date dateOfBirth;
     private Date dateOfJoining;
-	private String designation;
-	private String department;
+	private Designation designation;
+	private Department department;
 	private User user;
-	private String subDepartment;
+	private SubDepartment subDepartment;
 	private EmploymentStatus employmentStatus;
 	private EmploymentType employmentType;
 	private Double experience;
@@ -33,9 +37,14 @@ public class EmployeeDetailsResponse {
 		this.gender = details.getGender();
 		this.dateOfBirth = details.getDateOfBirth();
 		this.dateOfJoining = details.getDateOfJoining();
-		this.designation = details.getDesignation().getName();
-		this.department = details.getDepartment().getName();
-		this.subDepartment = details.getSubDepartment().getName();
+		this.department = new Department(details.getDepartment().getId(),details.getDepartment().getName());
+		
+		this.designation = new Designation(details.getDesignation().getId(),details.getDesignation().getName());
+		this.designation.setDepartment(this.department);
+		
+		this.subDepartment = new SubDepartment(details.getSubDepartment().getId(),details.getSubDepartment().getName());
+		this.subDepartment.setDepartment(this.department);
+		
 		this.employmentStatus = details.getEmploymentStatus();
 		this.employmentType = details.getEmploymentType();
 		this.experience = details.getExperience();
@@ -46,12 +55,7 @@ public class EmployeeDetailsResponse {
 	public Date getDateOfJoining() {
 		return dateOfJoining;
 	}
-	public String getDepartment() {
-		return department;
-	}
-	public String getDesignation() {
-		return designation;
-	}
+
 	public EmploymentStatus getEmploymentStatus() {
 		return employmentStatus;
 	}
@@ -76,9 +80,7 @@ public class EmployeeDetailsResponse {
 	public String getMiddleName() {
 		return middleName;
 	}
-	public String getSubDepartment() {
-		return subDepartment;
-	}
+	
 	public User getUser() {
 		return user;
 	}
@@ -88,12 +90,7 @@ public class EmployeeDetailsResponse {
 	public void setDateOfJoining(Date dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-	public void setDesignation(String designation) {
-		this.designation = designation;
-	}
+	
 	public void setEmploymentStatus(EmploymentStatus employmentStatus) {
 		this.employmentStatus = employmentStatus;
 	}
@@ -119,7 +116,23 @@ public class EmployeeDetailsResponse {
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-	public void setSubDepartment(String subDepartment) {
+	
+	public Designation getDesignation() {
+		return designation;
+	}
+	public void setDesignation(Designation designation) {
+		this.designation = designation;
+	}
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	public SubDepartment getSubDepartment() {
+		return subDepartment;
+	}
+	public void setSubDepartment(SubDepartment subDepartment) {
 		this.subDepartment = subDepartment;
 	}
 	public void setUser(User user) {

@@ -3,16 +3,20 @@ package com.auth.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth.exception.ResourceNotFoundException;
 import com.auth.model.Department;
 import com.auth.model.Designation;
 import com.auth.payload.ApiResponse;
@@ -47,6 +51,18 @@ public class DesignationController {
 		designation.setDepartment(department);
 		designationRepository.saveAndFlush(designation);
 		ResponseBean response = new ResponseBean(new ApiResponse(true, "Designation added successfully!"));
+		return new ResponseEntity<ResponseBean>(response,HttpStatus.OK);
+	}
+	
+	@PutMapping("/designation/{designationId}")
+	private ResponseEntity<ResponseBean> updateDesignation(@PathVariable(value = "designationId")Long id,@RequestBody Designation designation)
+	{
+		
+		Designation existing = designationRepository.findById(id)
+				.orElseThrow(()-> new ResourceNotFoundException("Designation", "id", id));
+		BeanUtils.copyProperties(designation, existing);
+		designationRepository.saveAndFlush(existing);
+		ResponseBean response = new ResponseBean(new ApiResponse(true, "Designation updated successfully!"));
 		return new ResponseEntity<ResponseBean>(response,HttpStatus.OK);
 	}
 }
