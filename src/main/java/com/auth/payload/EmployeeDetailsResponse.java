@@ -27,6 +27,7 @@ public class EmployeeDetailsResponse {
 	private EmploymentStatus employmentStatus;
 	private EmploymentType employmentType;
 	private Double experience;
+	private Long phoneNumber;
 	
 	public EmployeeDetailsResponse(EmployeeDetails details) {
 		super();
@@ -44,16 +45,25 @@ public class EmployeeDetailsResponse {
 		
 		this.subDepartment = new SubDepartment(details.getSubDepartment().getId(),details.getSubDepartment().getName());
 		this.subDepartment.setDepartment(this.department);
-		
+		this.phoneNumber = details.getPhoneNumber();
 		this.employmentStatus = details.getEmploymentStatus();
 		this.employmentType = details.getEmploymentType();
 		this.experience = details.getExperience();
 	}
+	
 	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
+
 	public Date getDateOfJoining() {
 		return dateOfJoining;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+	public Designation getDesignation() {
+		return designation;
 	}
 
 	public EmploymentStatus getEmploymentStatus() {
@@ -81,16 +91,29 @@ public class EmployeeDetailsResponse {
 		return middleName;
 	}
 	
+	public Long getPhoneNumber() {
+		return phoneNumber;
+	}
+	public SubDepartment getSubDepartment() {
+		return subDepartment;
+	}
 	public User getUser() {
 		return user;
 	}
+	
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public void setDateOfJoining(Date dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
-	
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	public void setDesignation(Designation designation) {
+		this.designation = designation;
+	}
+
 	public void setEmploymentStatus(EmploymentStatus employmentStatus) {
 		this.employmentStatus = employmentStatus;
 	}
@@ -103,7 +126,7 @@ public class EmployeeDetailsResponse {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
+	
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
@@ -116,21 +139,8 @@ public class EmployeeDetailsResponse {
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-	
-	public Designation getDesignation() {
-		return designation;
-	}
-	public void setDesignation(Designation designation) {
-		this.designation = designation;
-	}
-	public Department getDepartment() {
-		return department;
-	}
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-	public SubDepartment getSubDepartment() {
-		return subDepartment;
+	public void setPhoneNumber(Long phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	public void setSubDepartment(SubDepartment subDepartment) {
 		this.subDepartment = subDepartment;
